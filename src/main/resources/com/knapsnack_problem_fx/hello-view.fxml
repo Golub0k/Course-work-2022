@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.knapsnack_problem_fx.Controller">
+   <children>
+      <Label layoutX="150.0" layoutY="3.0" text="Knapsack Problem">
+         <font>
+            <Font name="Eras Bold ITC" size="32.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="44.0" prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #e0e5e6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="25.0" layoutY="21.0" text="knapsack capacity">
+               <font>
+                  <Font name="Eras Light ITC" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Capacity_Field" layoutX="147.0" layoutY="16.0" prefHeight="31.0" prefWidth="36.0" />
+            <Button fx:id="Set_button" layoutX="25.0" layoutY="56.0" mnemonicParsing="false" onAction="#SetCapacity" prefHeight="12.0" prefWidth="159.0" style="-fx-background-radius: 50;" text="set" AnchorPane.leftAnchor="27.0">
+               <font>
+                  <Font name="Eras Medium ITC" size="13.0" />
+               </font>
+            </Button>
+            <Separator layoutX="196.0" orientation="VERTICAL" prefHeight="105.0" prefWidth="6.0" />
+            <Label layoutX="210.0" layoutY="23.0" text="add item">
+               <font>
+                  <Font name="Eras Light ITC" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="313.0" layoutY="2.0" text="name">
+               <font>
+                  <Font name="Eras Light ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="432.0" layoutY="2.0" text="weight">
+               <font>
+                  <Font name="Eras Light ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="528.0" layoutY="2.0" text="value">
+               <font>
+                  <Font name="Eras Light ITC" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Name_Field" layoutX="272.0" layoutY="17.0" prefHeight="14.0" prefWidth="112.0" />
+            <TextField fx:id="Weight_Field" layoutX="422.0" layoutY="17.0" prefHeight="31.0" prefWidth="56.0" />
+            <TextField fx:id="Value_Field" layoutX="514.0" layoutY="17.0" prefHeight="31.0" prefWidth="56.0" AnchorPane.leftAnchor="514.0" AnchorPane.rightAnchor="30.0" />
+            <Button fx:id="Add_button" layoutX="272.0" layoutY="56.0" mnemonicParsing="false" onAction="#AddItem" prefHeight="27.0" prefWidth="301.0" style="-fx-background-radius: 50;" text="add" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="27.0">
+               <font>
+                  <Font name="Eras Medium ITC" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TabPane layoutY="149.0" prefHeight="273.0" prefWidth="600.0" style="-fx-background-color: #bec9ca; -fx-border-color: #93a7a6; -fx-border-radius: 30;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0">
+        <tabs>
+          <Tab text="all things">
+               <content>
+                  <TableView fx:id="itemsView_all" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #93a7a6;">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="205.0" text="name" />
+                        <TableColumn fx:id="weightColumn" prefWidth="175.0" text="weight" />
+                        <TableColumn fx:id="valueColumn" prefWidth="100.0" text="value" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <effect>
+                        <ColorAdjust brightness="-0.05" contrast="0.02" />
+                     </effect>
+                  </TableView>
+               </content>
+            </Tab>
+          <Tab text="got into a knapsack">
+               <content>
+                  <TableView fx:id="itemsView_in" prefHeight="234.0" prefWidth="328.0" style="-fx-border-color: #93a7a6;">
+                    <columns>
+                      <TableColumn fx:id="nameColumn2" prefWidth="208.0" text="name" />
+                        <TableColumn fx:id="weightColumn2" minWidth="0.0" prefWidth="132.0" text="weight" />
+                        <TableColumn fx:id="valueColumn2" minWidth="0.0" prefWidth="123.0" text="value" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <AnchorPane layoutX="1.0" layoutY="422.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Pane fx:id="visual_panel" layoutX="-1.0" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #bec9ca;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="Button_fill" layoutX="207.0" layoutY="14.0" mnemonicParsing="false" onAction="#Fill" prefHeight="28.0" prefWidth="187.0" style="-fx-background-radius: 50;" text="fill your backpack">
+                     <font>
+                        <Font name="Eras Medium ITC" size="15.0" />
+                     </font>
+                  </Button>
+                  <Circle fx:id="circle_item1" layoutX="115.0" layoutY="105.0" radius="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.5" visible="false">
+                     <fill>
+                        <LinearGradient endX="0.3349514563106797" endY="1.0" startX="0.7475728155339806" startY="0.3106796116504852">
+                           <stops>
+                              <Stop color="#e3b6b6df" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="circle_item2" layoutX="482.0" layoutY="105.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                     <fill>
+                        <LinearGradient endX="0.9611650485436893" endY="1.0" startX="0.25728155339805825">
+                           <stops>
+                              <Stop color="#e3b6b6df" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Label fx:id="item_name1" layoutX="86.0" layoutY="96.0" text="item1" visible="false">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="item_name2" layoutX="452.0" layoutY="96.0" text="item 2" visible="false">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="246.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/backpack.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="textCapacity" layoutX="294.0" layoutY="163.0" prefHeight="32.0" prefWidth="42.0">
+                     <font>
+                        <Font name="Eras Bold ITC" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="button_clear" mnemonicParsing="false" onAction="#Clear" prefHeight="4.0" prefWidth="50.0" style="-fx-background-radius: 50;" text="clear" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font name="Eras Medium ITC" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button_exit" mnemonicParsing="false" style="-fx-background-radius: 50;" text="exit" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font name="Eras Medium ITC" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
